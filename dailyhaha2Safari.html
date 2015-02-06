@@ -1,0 +1,85 @@
+<html>
+<script>
+guyleft=0;
+guytop=0;
+guyspeak="Whose line is it anyway?";
+galspeak="Whose line is it anyway?";
+
+guycansay=["You are beautiful!","I need to know what your name is.","Whose line is it anyway?","Love is what makes Odysseus kill his wife's suitors.","Love me.  I am the only one here!  Or are you from Lesbos?"];
+galcansay=["Smart bastard.  I slap you silly.","Whose line is it anyway?","Love.  Is it not the driving force of The Odyssey?","Oh, I have slept in the same bed as many men who did not smoke.  I even got free breakfast.  But no, not in bed at the same time -- with any one of those men -- when traveling."];
+
+
+function converseguy() {
+
+tempvar=Math.floor(Math.random()*guycansay.length);
+guyspeak=guycansay[tempvar];
+
+setTimeout("converseguy()",(Math.floor(Math.random()*5)+5)*1000);
+}
+
+function conversegal() {
+
+tempvar=Math.floor(Math.random()*galcansay.length);
+galspeak=galcansay[tempvar];
+
+setTimeout("conversegal()",(Math.floor(Math.random()*5)+5)*1000);
+}
+
+
+doit=["<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"guy.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:"];
+
+function guygoright(a)
+{
+guyleft=guyleft+10;
+
+document.getElementById('guy').innerHTML = doit[a] + guyleft + "px\"><table style=\"position:absolute;left:"+(guyleft+20)+"\"\"><tr><td width=\"100px\" align=\"center\">"+guyspeak+"</td></tr></table>";
+
+if(a > 0) setTimeout("guygoright("+(a-1)+")",250);
+}
+
+function guygoleft(a)
+{
+guyleft=guyleft-10;
+
+document.getElementById('guy').innerHTML = doit[a] + guyleft + "px\"><table style=\"position:absolute;left:"+(guyleft+20)+"\"\"><tr><td width=\"100px\" align=\"center\">"+guyspeak+"</td></tr></table>";
+
+if(a > 0) setTimeout("guygoleft("+(a-1)+")",250);
+}
+
+galleft=800;
+galtop=0;
+
+doit2=["<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(350deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(0deg);left:","<img src=\"gal.gif\" id=\"boy\" style=\"position: absolute;-webkit-transform:rotate(10deg);left:"];
+
+function galgoright(a)
+{
+galleft=galleft+10;
+
+document.getElementById('gal').innerHTML = doit2[a] + galleft + "px\"><table style=\"position:absolute;left:"+(galleft+ 55)+"\"\"><tr><td width=\"100px\" align=\"center\">"+galspeak+"</td></tr></table>";
+
+if(a > 0) setTimeout("galgoright("+(a-1)+")",250);
+}
+
+function galgoleft(a)
+{
+galleft=galleft-10;
+
+document.getElementById('gal').innerHTML = doit2[a] + galleft + "px\"><table style=\"position:absolute;left:"+(galleft + 55)+"\"\"><tr><td width=\"100px\" align=\"center\">"+galspeak+"</td></tr></table>";
+
+if(a > 0) setTimeout("galgoleft("+(a-1)+")",250);
+}
+
+
+</script>
+<body onload="converseguy();conversegal()">
+<input type="button" value="guy left" onclick="guygoleft(doit.length - 1);">
+<input type="button" value="guy right" onclick="guygoright(doit.length - 1);">
+<input type="button" value="gal left" onclick="galgoleft(doit.length - 1);">
+<input type="button" value="gal right" onclick="galgoright(doit.length - 1);">
+<hr>
+
+<div id="guy"><img src="guy.gif" style="position: absolute; -webkit-transform:rotate(0deg);"></div>
+<div id="gal"><img src="gal.gif" style="position: absolute; left: 800px;-webkit-transform:rotate(0deg);"></div>
+
+</body>
+</html>
